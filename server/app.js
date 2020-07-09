@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 
 let mongoose = require("mongoose");
 let express = require("express");
@@ -6,12 +8,14 @@ let bodyParser = require("body-parser");
 let cors = require("cors");
 let cookeParser = require("cookie-parser");
 
+
 //My Routes
 let authRoutes = require("./routes/auth");
 let userRoutes = require("./routes/user");
 let categoryRoutes = require("./routes/category");
 let productRoutes = require("./routes/product");
 let orderRoutes = require("./routes/order");
+let stripeRoute = require("./routes/stripepayment");
 
 
 
@@ -40,6 +44,7 @@ let orderRoutes = require("./routes/order");
   app.use("/api", categoryRoutes);
   app.use("/api", productRoutes);
   app.use("/api", orderRoutes);
+  app.use("/api", stripeRoute);
 
 
   //port
