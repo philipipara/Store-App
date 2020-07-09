@@ -5,6 +5,9 @@ import Base from "./Base";
 import Card from "./Card";
 
 import { loadCart } from "./helper/cartHelper";
+import StripeCheckOut from "./Stripe";
+import 'react-toastify/dist/ReactToastify.css';
+import {ToastContainer, toast} from "react-toastify";
 
 
 const Cart = () => {
@@ -47,9 +50,15 @@ const Cart = () => {
   
     return (
       <Base title="Cart Page" description="See Items in your Cart">
+          <ToastContainer />
         <div className="row text-center">
             <div className="col-6">{loadAllProducts()}</div>
-            <div className="col-6">{loadCheckout()}</div>
+            <div className="col-6">
+                <StripeCheckOut
+                products={products} 
+                setReload={setReload}
+                />
+                </div>
         </div>
       </Base>
     );

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ImageHelper from "./helper/ImageHelper";
 import { Redirect } from "react-router-dom";
 import { addItemToCart, removeItemFromCart } from "./helper/cartHelper";
+import { toast } from "react-toastify";
 
 const Card = ({ 
   product, 
@@ -18,7 +19,10 @@ const Card = ({
   const cartPrice = product ? product.price : "DEFAULT";
 
   const addToCart = () => {
-    addItemToCart(product, () => setRedirect(true));
+    addItemToCart(product, () => setRedirect(false));
+    toast("Item Added To Cart", {
+      type: "success"
+    });
   };
 
   const getARedirect = redirect => {
@@ -32,7 +36,7 @@ const Card = ({
       addtoCart && (
         <button
           onClick={addToCart}
-          className="btn btn-block btn-outline-success mt-2 mb-2"
+          className="btn btn-block btn-outline-info mt-2 mb-2"
         >
           Add to Cart
         </button>
@@ -47,6 +51,9 @@ const Card = ({
           onClick={() => {
             removeItemFromCart(product._id);
             setReload(!reload)
+            toast("Item Removed from Cart", {
+              type: "primary"
+            })
           }}
           className="btn btn-block btn-outline-danger mt-2 mb-2"
         >
@@ -61,7 +68,7 @@ const Card = ({
       <div className="card-body">
         {getARedirect(redirect)}
         <ImageHelper product={product} />
-        <p className="lead bg-success font-weight-normal text-wrap">
+        <p className="lead bg-info font-weight-normal text-wrap">
           {cartDescrption}
         </p>
         <p className="btn btn-success rounded  btn-sm px-4">$ {cartPrice}</p>
