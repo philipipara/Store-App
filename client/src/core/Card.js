@@ -51,9 +51,15 @@ const Card = ({
           onClick={() => {
             removeItemFromCart(product._id);
             setReload(!reload)
-            toast("Item Removed from Cart", {
-              type: "primary"
-            })
+            toast.error('Item removed from Cart', {
+              position: "bottom-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+              });
           }}
           className="btn btn-block btn-outline-danger mt-2 mb-2"
         >

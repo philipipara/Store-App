@@ -20,6 +20,7 @@ export default function Home() {
     //   });
     // };
 
+
     const loadAllProduct = () => {
       getProducts().then(data => {
         setProducts(data);
@@ -34,7 +35,7 @@ export default function Home() {
       <Base title="Home Page" description="Welcome to the Tshirt Store">
         <div className="row text-center">
         <ToastContainer />
-          <h1 className="text-white">All of tshirts</h1>
+          <h1 className="text-white">T-shirts for Sale</h1>
           <div className="row">
             {products && products.map((product, index) => {
               return (

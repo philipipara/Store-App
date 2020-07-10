@@ -27,6 +27,10 @@ const StripeCheckOut = ({products, setReload = f => f, reload=undefined}) => {
        return amount;
    }
 
+   useEffect(() => {
+    loadCart();
+  }, [reload]);
+
    const makePayment = (token) => {
         const body = {
             token,
@@ -44,7 +48,10 @@ const StripeCheckOut = ({products, setReload = f => f, reload=undefined}) => {
             console.log(response)
             const {status} = response;
             console.log("STATUS", status);
-            cartEmpty();
+            cartEmpty(() => {
+                console.log("Did we crash")
+            });
+            setReload(!reload)
         }).catch(err => console.log(err))
    }
 
@@ -74,7 +81,7 @@ const StripeCheckOut = ({products, setReload = f => f, reload=undefined}) => {
 
     return (
         <div>
-            <h3 className="text-white">Stripe Checkout {getTotal()}</h3>
+            <h3 className="text-white"> Total:  ${getTotal()}</h3>
             {showStripeButton()}
         </div>
     )

@@ -10,9 +10,22 @@ const currentTab = (history, path) => {
   }
 };
 
+const {user} = isAuthenticated();
+
+
 const Menu = ({ history }) => (
+    
+
   <div>
     <ul className="nav nav-tabs bg-dark">
+    {isAuthenticated() && (
+        <li className="nav-item mr-auto">
+          <span
+            className="nav-link text-success">
+            Welcome {user.name}
+          </span>
+        </li>
+      )}
       <li className="nav-item">
         <Link style={currentTab(history, "/")} className="nav-link" to="/">
           Home
@@ -86,6 +99,8 @@ const Menu = ({ history }) => (
           </span>
         </li>
       )}
+     
+
     </ul>
   </div>
 );
