@@ -7,22 +7,31 @@ import Card from "./Card";
 import { loadCart } from "./helper/cartHelper";
 import StripeCheckOut from "./Stripe";
 import 'react-toastify/dist/ReactToastify.css';
-import {ToastContainer, toast} from "react-toastify";
+import {ToastContainer} from "react-toastify";
 
 
 const Cart = () => {
     
     const [products, setProducts] = useState([])
     const [reload, setReload] = useState(false);
+    
 
     useEffect(() => {
         setProducts(loadCart())
     }, [reload]);
     
+
+
     const loadAllProducts = () => {
+
         return(
             <div>
-                <h1>Section load Products</h1>
+ 
+                {products.length === 0 ? 
+                <h1>Cart is Empty</h1>
+            :
+                <h1>You have {products.length} item(s) in your cart</h1>
+            }
                 {products && products.map((product, index) => {
                     return(
                     <Card
@@ -39,13 +48,7 @@ const Cart = () => {
         )
     }
 
-    const loadCheckout = () => {
-        return(
-            <div>
-                <h1>For Checkout</h1>
-            </div>
-        )
-    }
+    
   
   
     return (
@@ -53,6 +56,7 @@ const Cart = () => {
           <ToastContainer />
         <div className="row text-center">
             <div className="col-6">{loadAllProducts()}</div>
+            
             <div className="col-6">
                 <StripeCheckOut
                 products={products} 

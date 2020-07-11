@@ -1,6 +1,7 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useState} from "react";
 import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticated } from "../auth/helper";
+import { loadCart } from "./helper/cartHelper";
 
 const currentTab = (history, path) => {
   if (history.location.pathname === path) {
@@ -13,8 +14,9 @@ const currentTab = (history, path) => {
 const {user} = isAuthenticated();
 
 
+
 const Menu = ({ history }) => (
-    
+  
 
   <div>
     <ul className="nav nav-tabs bg-dark">
@@ -37,7 +39,7 @@ const Menu = ({ history }) => (
           className="nav-link"
           to="/cart"
         >
-          Cart
+          Cart 
         </Link>
       </li>
       {isAuthenticated() && isAuthenticated().user.role === 0 && (

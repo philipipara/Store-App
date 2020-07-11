@@ -4,6 +4,8 @@ import { Redirect } from "react-router-dom";
 import { addItemToCart, removeItemFromCart } from "./helper/cartHelper";
 import { toast } from "react-toastify";
 
+
+
 const Card = ({ 
   product, 
   addtoCart = true, 
@@ -18,12 +20,20 @@ const Card = ({
   const cartDescrption = product ? product.description : "Default description";
   const cartPrice = product ? product.price : "DEFAULT";
 
+  
+
+ 
+
+
   const addToCart = () => {
     addItemToCart(product, () => setRedirect(false));
-    toast("Item Added To Cart", {
+    toast(`${product.name} Added to Cart`, {
       type: "success"
     });
   };
+
+
+  
 
   const getARedirect = redirect => {
     if (redirect) {
@@ -51,9 +61,10 @@ const Card = ({
           onClick={() => {
             removeItemFromCart(product._id);
             setReload(!reload)
-            toast.error('Item removed from Cart', {
+            
+            toast.error('That is a bold strategy Cotton', {
               position: "bottom-right",
-              autoClose: 5000,
+              autoClose: 3000,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: false,
