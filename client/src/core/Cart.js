@@ -8,12 +8,15 @@ import { loadCart } from "./helper/cartHelper";
 import StripeCheckOut from "./Stripe";
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from "react-toastify";
+import { isAuthenticated } from "../auth/helper";
+
 
 
 const Cart = () => {
     
     const [products, setProducts] = useState([])
     const [reload, setReload] = useState(false);
+    const { user } = isAuthenticated();
     
 
     useEffect(() => {
@@ -48,23 +51,45 @@ const Cart = () => {
         )
     }
 
-    
+    const ifLoggedIn = () => {
+        if(!user) {
+            return(
+                <Base title="Shopping Cart" description="See Items in your Cart">
+                <ToastContainer />
+              <div className="row text-center">
+                  <div className="col-6">{loadAllProducts()}</div>
+                  
+                  <div className="col-6">
+                      <StripeCheckOut
+                      products={products} 
+                      setReload={setReload}
+                      />
+                      </div>
+              </div>
+            </Base>
+            );
+        } else {
+            return(
+                <Base title={`${user.name}'s Cart`} description="See Items in your Cart">
+                <ToastContainer />
+              <div className="row text-center">
+                  <div className="col-6">{loadAllProducts()}</div>
+                  
+                  <div className="col-6">
+                      <StripeCheckOut
+                      products={products} 
+                      setReload={setReload}
+                      />
+                      </div>
+              </div>
+            </Base>
+            )
+        }
+    }
   
   
     return (
-      <Base title="Cart Page" description="See Items in your Cart">
-          <ToastContainer />
-        <div className="row text-center">
-            <div className="col-6">{loadAllProducts()}</div>
-            
-            <div className="col-6">
-                <StripeCheckOut
-                products={products} 
-                setReload={setReload}
-                />
-                </div>
-        </div>
-      </Base>
+      ifLoggedIn()
     );
   }
 
