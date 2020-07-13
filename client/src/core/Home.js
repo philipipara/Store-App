@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles.css";
-import {  toast, ToastContainer} from "react-toastify";
+import {  ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Base from "./Base";
 import Card from "./Card";
@@ -32,10 +32,9 @@ export default function Home() {
     }, []);
   
     return (
-      <Base title="Home Page" description="Welcome to the Tshirt Store">
+      <Base title="Welcome to the Jersey Store" description="Find your MLB drip">
         <div className="row text-center">
         <ToastContainer />
-          <h1 className="text-white">T-shirts for Sale</h1>
           <div className="row">
             {products && products.map((product, index) => {
               return (

@@ -85,7 +85,7 @@ const Card = ({
       <div className="card-body">
         {getARedirect(redirect)}
         <ImageHelper product={product} />
-        <p className="lead bg-info font-weight-normal text-wrap">
+        <p className="lead text-sm font-weight-normal text-wrap mt-3">
           {cartDescrption}
         </p>
         <p className="btn btn-success rounded  btn-sm px-4">$ {cartPrice}</p>
