@@ -23,7 +23,7 @@ const Base = ({
       </div>
       <div className="container">
         <span className="text-muted">
-          Place to get your coding <span className="text-white">DRIP</span>
+          Place to get your MLB jersey <span className="text-white">DRIP</span>
         </span>
       </div>
     </footer>

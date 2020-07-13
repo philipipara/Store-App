@@ -21,15 +21,15 @@ const StripeCheckOut = ({products, setReload = f => f, reload=undefined}) => {
 
    const getTotal = () => {
        let amount = 0;
-       products.map(p => {
+       products && products.map(p => {
            amount = amount + p.price 
        })
        return amount;
    }
 
-   useEffect(() => {
-    loadCart();
-  }, [reload]);
+//    useEffect(() => {
+//     loadCart();
+//   }, [reload]);
 
    const makePayment = (token) => {
         const body = {
@@ -45,7 +45,7 @@ const StripeCheckOut = ({products, setReload = f => f, reload=undefined}) => {
             body: JSON.stringify(body)
 
         }).then(response => {
-            console.log(response)
+            
             const {status} = response;
             console.log("STATUS", status);
             cartEmpty(() => {
@@ -83,6 +83,7 @@ const StripeCheckOut = ({products, setReload = f => f, reload=undefined}) => {
         <div>
             <h3 className="text-white"> Total:  ${getTotal()}</h3>
             {showStripeButton()}
+            
         </div>
     )
 }
