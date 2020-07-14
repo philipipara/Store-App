@@ -1,7 +1,8 @@
 import React, {Fragment, useState} from "react";
 import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticated } from "../auth/helper";
-import { loadCart } from "./helper/cartHelper";
+import { loadCart, cartEmpty } from "./helper/cartHelper";
+
 
 const currentTab = (history, path) => {
   if (history.location.pathname === path) {
@@ -94,7 +95,9 @@ const Menu = ({ history }) => (
             onClick={() => {
               signout(() => {
                 history.push("/");
+                
               });
+              
             }}
           >
             Signout

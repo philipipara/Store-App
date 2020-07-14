@@ -62,7 +62,7 @@ const Card = ({
             removeItemFromCart(product._id);
             setReload(!reload)
             
-            toast.error('That is a bold strategy Cotton', {
+            toast.error('That\'s\ a bold strategy Cotton', {
               position: "bottom-right",
               autoClose: 3000,
               hideProgressBar: false,

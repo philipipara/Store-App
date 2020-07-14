@@ -30,7 +30,7 @@ const Cart = () => {
         return(
             <div>
  
-                {products.length === 0 ? 
+                {products.length == 0 ? 
                 <h1>Cart is Empty</h1>
             :
                 <h1>You have {products.length} item(s) in your cart</h1>
@@ -54,7 +54,7 @@ const Cart = () => {
     const ifLoggedIn = () => {
         if(!user) {
             return(
-                <Base title="Shopping Cart" description="See Items in your Cart">
+                <Base title="Shopping Cart">
                 <ToastContainer />
               <div className="row text-center">
                   <div className="col-6">{loadAllProducts()}</div>
@@ -70,7 +70,7 @@ const Cart = () => {
             );
         } else {
             return(
-                <Base title={`${user.name}'s Cart`} description="See Items in your Cart">
+                <Base title={`${user.name}'s Cart`}>
                 <ToastContainer />
               <div className="row text-center">
                   <div className="col-6">{loadAllProducts()}</div>
