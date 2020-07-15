@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useState, useEffect} from "react";
 import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticated } from "../auth/helper";
 import { loadCart, cartEmpty } from "./helper/cartHelper";
@@ -13,7 +13,11 @@ const currentTab = (history, path) => {
 };
 
 const {user} = isAuthenticated();
+// const [reload, setReload] = useState(false)
 
+// useEffect(() => {
+//   loadCart()
+// }, [reload]);
 
 
 const Menu = ({ history }) => (
@@ -82,6 +86,7 @@ const Menu = ({ history }) => (
                   style={currentTab(history, "/signin")}
                   className="nav-link"
                   to="/signin"
+                  
                 >
                   Sign In
                 </Link>
