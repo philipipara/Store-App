@@ -7,3 +7,5 @@ to the products on the website. The application is being built by using the MERN
 Here is a few samples what it looks like so far
 
 ![Loading](https://github.com/philipipara/Store-App/blob/master/client/images/preview.png)
+![Admin](https://github.com/philipipara/Store-App/blob/master/client/images/preview2.png)
+![Cart](https://github.com/philipipara/Store-App/blob/master/client/images/preview3.png)
