@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Base from "../core/Base";
-import { deleteCategory, getCategories } from "./helper/adminapicall";
+import { removeCategory, getCategories } from "./helper/adminapicall";
 import { isAuthenticated } from "../auth/helper";
 import { Link } from "react-router-dom";
 
@@ -28,7 +28,7 @@ const ManageCategories = ()  => {
     }, []);
 
     const deleteThisCategory = categoryId => {
-        deleteCategory(categoryId, user._id, token).then(data => {
+        removeCategory(categoryId, user._id, token).then(data => {
             // if(data.error) {
             //     console.log(data.error)
             // } else {
@@ -48,7 +48,7 @@ const ManageCategories = ()  => {
         <div className="col-12">
           <h2 className="text-center text-white my-3">Total Categories</h2>
 
-            {category.map((category, index) => {
+            {category && category.map((category, index) => {
                 return(
                         <div key={index} className="row text-center mb-2 ">
                         <div className="col-4">

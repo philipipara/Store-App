@@ -3,8 +3,8 @@ import { API } from "../../backend";
 
 
 //manage categories
-export const deleteCategory =(userId, token, category) => {
-    return fetch(`${API}/categories/${category}/${userId}`, {
+export const removeCategory =(categoryId, token, userId) => {
+    return fetch(`${API}/category/${categoryId}/${userId}`, {
         method: "DELETE",
         headers: {
             Accept: "application/json",
@@ -16,6 +16,19 @@ export const deleteCategory =(userId, token, category) => {
     })
     .catch(err => console.log(err))
 }
+
+
+export const getACategory= categoryId => {
+    return fetch(`${API}/category/${categoryId}`, {
+        method: "GET"
+    })
+    .then(response => {
+        return response.json()
+    })
+    .catch(err => console.log(err))
+}
+
+
 
 export const createACategory = (userId, token, category) => {
     return fetch(`${API}/category/create/${userId}`, {
@@ -45,6 +58,21 @@ export const getCategories = () => {
     .catch(err => console.log(err))
 }
 
+export const updateCategory = (categoryId, userId, token, category) => {
+    return fetch(`${API}/category/${categoryId}/${userId}`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`
+
+        },
+        body: category
+    })
+    .then(response =>{
+        return response.json()
+    })
+    .catch(err => console.log(err))
+}
 
 
 
