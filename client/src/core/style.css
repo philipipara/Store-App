@@ -1,0 +1,18 @@
+.card-product {
+    color: white;
+    background-color: #343a40;
+    border-radius: 45px;
+    border-color: #5bc0de;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 2px #5bc0de;
+    
+}
+
+
+
+.card-header {
+    background-color: transparent; 
+    border-color: transparent;
+  }
+

@@ -3,6 +3,7 @@ import ImageHelper from "./helper/ImageHelper";
 import { Redirect } from "react-router-dom";
 import { addItemToCart, removeItemFromCart } from "./helper/cartHelper";
 import { toast } from "react-toastify";
+import "./style.css"
 
 
 
@@ -72,7 +73,7 @@ const Card = ({
               progress: undefined,
               });
           }}
-          className="btn btn-block btn-outline-danger mt-2 mb-2"
+          className="btn  btn-block btn-outline-danger mt-2 mb-2"
         >
           Remove from cart
         </button>
@@ -80,7 +81,7 @@ const Card = ({
     );
   };
   return (
-    <div className="card text-white bg-dark border border-info ">
+    <div className="card-product border border-info">
       <div className="card-header lead">{cartTitle}</div>
       <div className="card-body">
         {getARedirect(redirect)}
@@ -88,7 +89,7 @@ const Card = ({
         <p className="lead text-sm font-weight-normal text-wrap mt-3">
           {cartDescrption}
         </p>
-        <p className="btn btn-success rounded  btn-sm px-4">$ {cartPrice}</p>
+        <p className="btn btn-success rounded btn-sm px-4">$ {cartPrice}</p>
         <div className="row">
           <div className="col-12">{showAddToCart(addtoCart)}</div>
           <div className="col-12">{showRemoveFromCart(removeFromCart)}</div>
@@ -99,3 +100,4 @@ const Card = ({
 };
 
 export default Card;
+
