@@ -26,11 +26,11 @@ const Cart = () => {
 
 
     const loadAllProducts = () => {
-
+       
         return(
             <div>
  
-                {products.length == 0 ? 
+                {products == undefined ? 
                 <h1>Cart is Empty</h1>
             :
                 <h1>You have {products.length} item(s) in your cart</h1>

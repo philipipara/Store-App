@@ -3,7 +3,7 @@ import { API } from "../../backend";
 
 
 //manage categories
-export const removeCategory =(categoryId, token, userId) => {
+export const removeCategory =(userId, token, categoryId) => {
     return fetch(`${API}/category/${categoryId}/${userId}`, {
         method: "DELETE",
         headers: {
@@ -58,6 +58,7 @@ export const getCategories = () => {
     .catch(err => console.log(err))
 }
 
+
 export const updateCategory = (categoryId, userId, token, category) => {
     return fetch(`${API}/category/${categoryId}/${userId}`, {
         method: "PUT",
@@ -73,6 +74,7 @@ export const updateCategory = (categoryId, userId, token, category) => {
     })
     .catch(err => console.log(err))
 }
+
 
 
 
