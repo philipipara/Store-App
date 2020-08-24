@@ -47,7 +47,7 @@ let stripeRoute = require("./routes/stripepayment");
   app.use("/api", productRoutes);
   app.use("/api", orderRoutes);
   app.use("/api", stripeRoute);
-  app.use(expressJwt('/api',process.env.SECRET));
+  app.use(expressJwt('/api', {secret: 'pizza'}));
 
   //port
   const PORT = process.env.PORT || 8000;
