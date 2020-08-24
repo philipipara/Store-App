@@ -1,5 +1,5 @@
-require("dotenv").config();
 
+require('dotenv').config({ path: 'env file path' })
 
 let mongoose = require("mongoose");
 let express = require("express");
