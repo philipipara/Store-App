@@ -26,19 +26,17 @@ const Signin = () => {
 
   const onSubmit = event => {
     event.preventDefault();
-    setValues({ ...values, error: false, loading: true });
+    setValues({ ...values });
     signin({ email, password })
       .then(data => {
-        if (data.error) {
-          setValues({ ...values, error: data.error, loading: false });
-        } else {
+        
           authenticate(data, () => {
             setValues({
               ...values,
               didRedirect: true
             });
           });
-        }
+        
       })
       .catch(console.log("signin request failed"));
   };
