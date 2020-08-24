@@ -8,6 +8,7 @@ let bodyParser = require("body-parser");
 let cors = require("cors");
 let cookeParser = require("cookie-parser");
 let path = require('path');
+let expressJwt = require('express-jwt')
 
 
 //My Routes
@@ -46,7 +47,7 @@ let stripeRoute = require("./routes/stripepayment");
   app.use("/api", productRoutes);
   app.use("/api", orderRoutes);
   app.use("/api", stripeRoute);
-
+  app.use(expressJwt('/api',process.env.SECRET));
 
   //port
   const PORT = process.env.PORT || 8000;
