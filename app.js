@@ -6,9 +6,9 @@ let express = require("express");
 let  app = express();
 let bodyParser = require("body-parser");
 let cors = require("cors");
-let cookeParser = require("cookie-parser");
+let cookieParser = require("cookie-parser");
 let path = require('path');
-let expressJwt = require('express-jwt')
+
 
 
 //My Routes
@@ -38,7 +38,7 @@ let stripeRoute = require("./routes/stripepayment");
   //middleware
   app.use(bodyParser.json());
   app.use(cors());
-  app.use(cookeParser());
+  app.use(cookieParser());
 
   //Routes
   app.use("/api", authRoutes);
@@ -47,6 +47,7 @@ let stripeRoute = require("./routes/stripepayment");
   app.use("/api", productRoutes);
   app.use("/api", orderRoutes);
   app.use("/api", stripeRoute);
+  
   
 
   //port
