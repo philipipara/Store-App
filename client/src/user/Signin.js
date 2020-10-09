@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Base from "../core/Base";
-import { Redirect } from "react-router-dom";
+import {  Redirect } from "react-router-dom";
 
 import { signin, authenticate, isAuthenticated } from "../auth/helper";
 
@@ -16,27 +16,25 @@ const Signin = () => {
   const { email, password, error, loading, didRedirect } = values;
   const { user } = isAuthenticated();
 
-  
-
-
-
   const handleChange = name => event => {
     setValues({ ...values, error: false, [name]: event.target.value });
   };
 
   const onSubmit = event => {
     event.preventDefault();
-    setValues({ ...values });
+    setValues({ ...values, error: false, loading: true });
     signin({ email, password })
       .then(data => {
-        
+        if (data.error) {
+          setValues({ ...values, error: data.error, loading: false });
+        } else {
           authenticate(data, () => {
             setValues({
               ...values,
               didRedirect: true
             });
           });
-        
+        }
       })
       .catch(console.log("signin request failed"));
   };
@@ -54,6 +52,7 @@ const Signin = () => {
       return <Redirect to="/" />;
     }
   };
+
 
   const loadingMessage = () => {
     return (
@@ -114,12 +113,11 @@ const Signin = () => {
   };
 
   return (
-    <Base title="Sign In page">
+    <Base title="Sign In page" description="A page for user to sign in!">
       {loadingMessage()}
       {errorMessage()}
       {signInForm()}
       {performRedirect()}
-
     </Base>
   );
 };
