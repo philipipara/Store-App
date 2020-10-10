@@ -86,9 +86,9 @@ const Card = ({
       <div className="card-body">
         {getARedirect(redirect)}
         <ImageHelper product={product} />
-        <p className="lead text-sm font-weight-normal text-wrap mt-3">
+        {/* <p className="lead text-sm font-weight-normal text-wrap mt-3">
           {cartDescrption}
-        </p>
+        </p> */}
         <p className="btn btn-success rounded btn-sm px-4">$ {cartPrice}</p>
         <div className="row">
           <div className="col-12">{showAddToCart(addtoCart)}</div>

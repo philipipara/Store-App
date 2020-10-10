@@ -9,6 +9,7 @@ import StripeCheckOut from "./Stripe";
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from "react-toastify";
 import { isAuthenticated } from "../auth/helper";
+import {createOrder} from "./helper/orderHelper";
 
 
 
@@ -17,6 +18,7 @@ const Cart = () => {
     const [products, setProducts] = useState([])
     const [reload, setReload] = useState(false);
     const { user } = isAuthenticated();
+    const [order, setOrder] = useState([]);
     
 
     useEffect(() => {
@@ -79,6 +81,7 @@ const Cart = () => {
                       <StripeCheckOut
                       products={products} 
                       setReload={setReload}
+                      
                       />
                       </div>
               </div>
