@@ -41,12 +41,12 @@ const Orders = () => {
                 </Link>
             )}
             <div className="row bg-dark rounded">
-                {orders.filter(myorder => myorder.user._id === _id).map((order, index) => (
+                {orders.map(myorder => myorder.user._id === _id).map((order, index) => (
                     <div key={index} className="col-md-8 offset-md-2 bg-white text-black mt-2 mb-2 rounded">
                         <h4>{order.user.name}</h4>
                         <p>TransactionID: {order.transaction_id}</p>
                         {order.products.map((product, index) => (
-                            <h5 key={index}>{product.name} ---> ${product.price}</h5>
+                            <h5 key={index}>{product.name} ${product.price}</h5>
                         ))}
                         <p>-----------------------------</p>
                         <h4>Total Price: ${order.amount}</h4>

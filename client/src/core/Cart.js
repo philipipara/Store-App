@@ -81,7 +81,7 @@ const Cart = () => {
                       <StripeCheckOut
                       products={products} 
                       setReload={setReload}
-                      
+                      setOrder={createOrder}
                       />
                       </div>
               </div>
