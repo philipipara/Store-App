@@ -1,6 +1,6 @@
 import React from "react";
 import { API } from "../../backend";
-
+import './image.css'
 
 const ImageHelper = ({product}) => {
     const imageUrl = product
@@ -11,8 +11,7 @@ const ImageHelper = ({product}) => {
         <img
           src={imageUrl}
           alt="photo"
-          style={{ height: "250px", width: "250px" }}
-          className="mb-3 rounded"
+        
         />
       </div>
     )

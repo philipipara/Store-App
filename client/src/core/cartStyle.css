@@ -1,0 +1,7 @@
+.card-product {
+    margin-top: 13px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 2;
+    max-width: 400px;
+}

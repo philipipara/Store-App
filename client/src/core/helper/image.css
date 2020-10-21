@@ -1,0 +1,15 @@
+
+img {
+    height: 250px;
+    width: 250px;
+    margin-bottom: 3px;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    img{
+      width: 50%;
+      max-height: 25px;
+    }
+}
